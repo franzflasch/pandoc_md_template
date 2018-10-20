@@ -22,26 +22,29 @@ help:
 	@echo ' 																	  '
 	@echo 'get templates from: https://github.com/jgm/pandoc-templates			  '
 
-pdf:
+prepare:
+	mkdir -p $(OUTPUTDIR)
+
+pdf: prepare
 	pandoc -s -f markdown-auto_identifiers \
 	"$(INPUTDIR)"/*.md \
 	-o "$(OUTPUTDIR)/output_doc.pdf" \
 	--template="$(STYLEDIR)/template.tex" \
 	--latex-engine=xelatex
 
-tex:
+tex: prepare
 	pandoc -s \
 	"$(INPUTDIR)"/*.md \
 	-o "$(OUTPUTDIR)/output_doc.tex" \
 	--template="$(STYLEDIR)/template.tex" \
 	--latex-engine=xelatex
 
-docx:
+docx: prepare
 	pandoc "$(INPUTDIR)"/*.md \
 	-o "$(OUTPUTDIR)/output_doc.docx" \
 
-html:
+html: prepare
 	pandoc "$(INPUTDIR)"/*.md \
 	-o "$(OUTPUTDIR)/output_doc.html"
 
-.PHONY: help pdf docx html tex
+.PHONY: help pdf docx html tex prepare
