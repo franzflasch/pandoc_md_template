@@ -1,0 +1,46 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt, a4paper]{article}
+\usepackage{fontspec} 
+
+% DOCUMENT LAYOUT
+\usepackage[margin=1.2in]{geometry} 
+\setlength\parindent{0in}
+
+% fix for pandoc 1.14
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% FONTS
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (quotes'' --- dashes etc.) to unicode
+
+% Set font to Sans Serif
+\renewcommand{\familydefault}{\sfdefault}
+
+% HEADINGS and TITLES
+\usepackage{sectsty}
+\usepackage[normalem]{ulem}
+%\sectionfont{\sffamily\mdseries\large\underline} % Underlines headings
+\setcounter{secnumdepth}{-1} % Removes the numbers before sections
+%\subsectionfont{\rmfamily\mdseries\scshape\normalsize}
+%\subsubsectionfont{\rmfamily\bfseries\upshape\normalsize}
+
+% Header and Footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{$if(left_head)$$left_head$$endif$}
+%\rhead{this is page \thepage}
+\rhead{\includegraphics[width=2cm]{source/images/GPLv3_Logo.png}}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% BEGIN DOCUMENT
+\begin{document}
+\begin{raggedright}
+$body$
+\end{raggedright}
+\end{document}
